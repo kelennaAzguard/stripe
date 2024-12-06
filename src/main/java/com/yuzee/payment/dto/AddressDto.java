@@ -1,4 +1,4 @@
-package com.payment.stripe.dto;
+package com.yuzee.payment.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;

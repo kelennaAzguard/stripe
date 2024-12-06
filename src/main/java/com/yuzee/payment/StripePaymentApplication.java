@@ -1,4 +1,4 @@
-package com.payment.stripe;
+package com.yuzee.payment;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@ComponentScan(basePackages = {"com.yuzee", "com.payment.stripe"})
+@ComponentScan(basePackages = {"com.yuzee", "com.yuzee.payment"})
 @EnableDiscoveryClient
 public class StripePaymentApplication {
 

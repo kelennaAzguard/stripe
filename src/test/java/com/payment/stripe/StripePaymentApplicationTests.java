@@ -16,10 +16,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import com.payment.stripe.service.CustomerService;
+
 import com.stripe.exception.StripeException;
 import com.stripe.model.Customer;
 import com.yuzee.common.lib.dto.stripe.CustomerDto;
+import com.yuzee.payment.StripePaymentApplication;
+import com.yuzee.payment.service.CustomerService;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")

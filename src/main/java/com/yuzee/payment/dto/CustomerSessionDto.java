@@ -1,4 +1,4 @@
-package com.payment.stripe.dto;
+package com.yuzee.payment.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stripe.model.CustomerSession.Components;

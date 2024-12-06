@@ -1,15 +1,21 @@
-package com.payment.stripe.service;
+package com.yuzee.payment.service;
 
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Service;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Customer;
 import com.stripe.model.CustomerSession;
+import com.stripe.model.Product;
+import com.stripe.model.ProductCollection;
+import com.stripe.model.billingportal.Session;
 import com.stripe.param.CustomerCreateParams;
 import com.stripe.param.CustomerSessionCreateParams;
 import com.stripe.param.CustomerUpdateParams;
+import com.stripe.param.ProductListParams;
+import com.stripe.param.billingportal.SessionCreateParams;
 
 @Service
 public class CustomerService {
@@ -45,6 +51,13 @@ public class CustomerService {
 		return customer;
 	}
 
+	public Session potalSession(String customerId, String url) throws StripeException {
+		Stripe.apiKey = stripeApiKey;
+		SessionCreateParams params = SessionCreateParams.builder().setCustomer(customerId).setReturnUrl(url).build();
+		Session session = Session.create(params);
+		return session;
+	}
+
 	public CustomerSession createCustomerSession(String customerId) throws StripeException {
 		Stripe.apiKey = stripeApiKey;
 		CustomerSessionCreateParams params = CustomerSessionCreateParams.builder().setCustomer(customerId)
@@ -55,5 +68,13 @@ public class CustomerService {
 				.build();
 		CustomerSession customerSession = CustomerSession.create(params);
 		return customerSession;
+	}
+
+	public ProductCollection listOfAllProduct(long limit) throws StripeException {
+		Stripe.apiKey = stripeApiKey;
+		ProductListParams params = ProductListParams.builder().setLimit(limit).build();
+
+		ProductCollection products = Product.list(params);
+		return products;
 	}
 }
